@@ -9,16 +9,16 @@ app.use(express.json());
 let tickets = [
     {
         id: 1,
-        name: 'Test Ticket 1',
+        name: 'Тестовый тикет 1',
         status: false,
-        description: 'Description for Test Ticket 1',
+        description: 'Описание для Тестового тикета 1',
         created: Date.now(),
     },
     {
         id: 2,
-        name: 'Test Ticket 2',
+        name: 'Тестовый тикет 2',
         status: true,
-        description: 'Description for Test Ticket 2',
+        description: 'Описание для Тестового тикета 2',
         created: Date.now(),
     },
 ];
@@ -33,13 +33,13 @@ app.get('/', (req, res) => {
         if (ticket) {
             res.json(ticket);
         } else {
-            res.status(404).send('Ticket not found');
+            res.status(404).send('Тикет не найден');
         }
     } else if (method === 'deleteById' && id) {
         tickets = tickets.filter(ticket => ticket.id !== Number(id));
         res.status(204).send();
     } else {
-        res.status(400).send('Invalid method or missing id');
+        res.status(400).send('Неверный метод или отсутствует id');
     }
 });
 
@@ -49,7 +49,7 @@ app.post('/', (req, res) => {
 
     if (method === 'createTicket') {
         const newTicket = {
-            id: tickets.length ? Math.max(tickets.map(ticket => ticket.id)) + 1 : 1,
+            id: tickets.length ? Math.max(...tickets.map(ticket => ticket.id)) + 1 : 1,
             name,
             description,
             status: status || false,
@@ -63,13 +63,13 @@ app.post('/', (req, res) => {
             tickets[ticketIndex] = { ...tickets[ticketIndex], name, description, status };
             res.json(tickets[ticketIndex]);
         } else {
-            res.status(404).send('Ticket not found');
+            res.status(404).send('Тикет не найден');
         }
     } else {
-        res.status(400).send('Invalid method or missing id');
+        res.status(400).send('Неверный метод или отсутствует id');
     }
 });
 
 app.listen(port, () => {
-    console.log(`API server listening at http://localhost:${port}`);
+    console.log(`Сервер API слушает на http://localhost:${port}`);
 });

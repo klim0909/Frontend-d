@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HelpDesk</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HelpDesk Frontend</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>HelpDesk</h1>
-    <div id="ticket-list"></div>
-    <form id="ticket-form">
-        <input type="text" id="name" placeholder="Name" required>
-        <textarea id="description" placeholder="Description" required></textarea>
-        <button type="submit">Create Ticket</button>
-    </form>
-    <script src="bundle.js"></script>
+  <div id="app">
+    <header>
+      <h1>HelpDesk</h1>
+      <button id="add-ticket-button">Добавить тикет</button>
+    </header>
+    <main id="ticket-list"></main>
+  </div>
+  <script src="bundle.js"></script>
 </body>
 </html>
